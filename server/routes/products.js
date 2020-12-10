@@ -18,7 +18,8 @@ Keys of the params:
 
 router.get('/', productsController.getProducts);
 
-/* Task 3. This require to pass the Id of a product as a param.
+/* Task 3. This require to pass the Id of a product as a param. It will show you the 5 products closest to the price and
+inside the same category.
  */
 
  router.get('/sorted-list', productsController.getList);
