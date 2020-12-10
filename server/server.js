@@ -3,11 +3,12 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors')
-const products = require('./db');
+const productsRoutes = require('./routes/products');
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/products', productsRoutes);
 
 http.createServer(app).listen(3001, () => {
   console.log('Listen on 0.0.0.0:3001');

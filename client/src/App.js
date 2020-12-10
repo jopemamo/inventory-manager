@@ -1,6 +1,11 @@
+import React from 'react';
+import Home from './pages/Home';
+import './styles/App.css';
+
+
 const App = () => (
   <div className="app">
-    <h3>Happy hacking!</h3>
+    <Home />
   </div>
 );
 
