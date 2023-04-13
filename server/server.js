@@ -1,23 +1,18 @@
 const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const app = express();
-const cors = require('cors')
+const path = require('path');
 const productsRoutes = require('./routes/products');
 
-app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use('/products', productsRoutes);
+const app = express();
+const PORT = process.env.PORT || 5005;
 
-http.createServer(app).listen(3001, () => {
-  console.log('Listen on 0.0.0.0:3001');
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.json());
+app.use('/api/products', productsRoutes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.get('/', (_, res) => {
-  res.send({ status: 200 });
-});
-
-process.on('SIGINT', function () {
-  process.exit();
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
