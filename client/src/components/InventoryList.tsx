@@ -115,7 +115,7 @@ const InventoryList = () => {
       </form>
       {!loading && (
         <div>
-          <ProductList products={productList} />
+          <ProductList products={productList} showSimilar={true} />
           <div className="pagination_buttons">
             <button disabled={currentPage < 2} onClick={e => handlePageChange(currentPage - 1, e)}>
               Previous

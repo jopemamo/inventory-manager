@@ -1,6 +1,9 @@
-const ProductList = ({ products }: any) => {
+import { useNavigate } from 'react-router-dom'
+
+const ProductList = ({ products, showSimilar = false }: any) => {
+  const navigate = useNavigate()
   return (
-    <div>
+    <ul className="list_products">
       {products
         ?.sort((a: any, b: any) => {
           if (a.category < b.category) {
@@ -12,13 +15,22 @@ const ProductList = ({ products }: any) => {
           return 0
         })
         .map((product: any) => (
-          <div key={product.id}>
+          <li className="list_product" key={product.id}>
             <div>
               {product.category}-{product.name}-{product.price}kr.
             </div>
-          </div>
+            {showSimilar && (
+              <button
+                style={{ marginLeft: '5px' }}
+                type="button"
+                onClick={() => navigate(`/product/${product.id}`)}
+              >
+                Find similar
+              </button>
+            )}
+          </li>
         ))}
-    </div>
+    </ul>
   )
 }
 

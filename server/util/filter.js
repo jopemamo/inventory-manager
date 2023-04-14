@@ -28,3 +28,5 @@ return result;
 }
 
 module.exports.sorting = sorting;
+
+module.exports.pagination = pagination;

@@ -30,3 +30,13 @@ form {
   width: 60%;
   margin: 2%;
 }
+
+.list_products {
+  padding-left: 0;
+}
+
+.list_product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
